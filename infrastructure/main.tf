@@ -55,6 +55,7 @@ module "slave_server_2" {
   root_volume_size          = 25  # Setting root volume size to 25GB
   root_volume_type          = "gp2" # Setting volume type to General Purpose SSD
 }
+/*
 module "nexus" {
   source                    = "./modules/servers"
   ami_id                    = var.ec2_ami_id
@@ -84,7 +85,7 @@ module "solarqube" {
 
 
 
-/*
+
 module "lb_target_group" {
   source                   = "./modules/load-balancer-target-group"
   lb_target_group_name     = "jenkins-lb-target-group"
