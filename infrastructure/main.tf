@@ -96,6 +96,19 @@ module "jenkins" {
   root_volume_type          = "gp2" # Setting volume type to General Purpose SSD
 }
 
+module "monitoring" {
+  source                    = "./modules/servers"
+  ami_id                    = var.ec2_ami_id
+  instance_type             = "t2.medium"
+  tag_name                  = "monitoring"
+  public_key                = var.public_key
+  subnet_id                 = tolist(module.networking.dev_proj_1_public_subnets)[0]
+  sg_for_jenkins            = [module.security_group.sg_ec2_sg_ssh_http_id, module.security_group.sg_ec2_jenkins_port_8080]
+  enable_public_ip_address  = true
+  user_data_install_jenkins = templatefile("./modules/servers/monitoring.sh", {})
+  root_volume_size          = 25  # Setting root volume size to 25GB
+  root_volume_type          = "gp2" # Setting volume type to General Purpose SSD
+}
 
 
 /*
