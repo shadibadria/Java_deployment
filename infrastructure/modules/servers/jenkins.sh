@@ -24,3 +24,11 @@ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 kubectl version --short --client
+
+sudo yum update -y
+sudo amazon-linux-extras install docker
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+sudo usermod -a -G docker jenkins
+sudo chmod 666 /var/run/docker.sock
