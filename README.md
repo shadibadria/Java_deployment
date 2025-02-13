@@ -1,5 +1,17 @@
 # BoardgameListingWebApp
 
+
+## Steps:
+- create vpc,security groups...
+- create ec2 k8 cluster 
+  - at master run at end :
+  - kubectl apply -f https://docs.projectcalico.org/v3.20/manifests/calico.yaml
+  - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.49.0/deploy/static/provider/baremetal/deploy.yaml
+  - kubeaudit all - security checks
+- create ec2 : 
+    - nexus server
+    - sonarqube
+
 ## Description
 
 **Board Game Database Full-Stack Web Application.**
