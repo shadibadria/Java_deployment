@@ -27,7 +27,7 @@ pipeline {
         stage('SonarQube Analysis ') {
             steps {
                 withSonarQubeEnv('sonar') {
-                sh ''' $SCANNER_HOME/bin/sonar-scanner - sonar.projectName=Java_deployment - Dsonar.projectKey=Java_deployment \
+                sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Java_deployment -Dsonar.projectKey=Java_deployment \
                     -Dsonar.java.binaries=. '''
               }
             }
