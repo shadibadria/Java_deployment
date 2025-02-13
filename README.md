@@ -11,7 +11,96 @@
 - create ec2 : 
     - nexus server
     - sonarqube
+    - jenkins:
+      - plugins to install:
+        - jdk (eclipse temurin installer)
+        - maven (config file provider + pipeline maven integration,maven integration)
+        - sonar( sonarqube scanner)
+        - docker (docker + docker pipeline)
+        - kuber ( kubernetes + kuberntes cli + kuberntes credentials + kuberntese client api )
+        - configure plugins (dashboard manage jenkins -> tools  )
 
+
+## k8:
+# create serviceaccount as svc.yaml
+```apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins
+  namespace: webapps
+
+# create namespace 
+kubectl create ns webapps
+
+k apply -f svc.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: app-role
+  namespace: webapps
+rules:
+  - apiGroups:
+        - ""
+        - apps
+        - autoscaling
+        - batch
+        - extensions
+        - policy
+        - rbac.authorization.k8s.io
+    resources:
+      - pods
+      - secrets
+      - componentstatuses
+      - configmaps
+      - daemonsets
+      - deployments
+      - events
+      - endpoints
+      - horizontalpodautoscalers
+      - ingress
+      - jobs
+      - limitranges
+      - namespaces
+      - nodes
+      - pods
+      - persistentvolumes
+      - persistentvolumeclaims
+      - resourcequotas
+      - replicasets
+      - replicationcontrollers
+      - serviceaccounts
+      - services
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+# bind
+    apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: app-rolebinding
+  namespace: webapps 
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: app-role 
+subjects:
+- namespace: webapps 
+  kind: ServiceAccount
+  name: jenkins 
+
+# create token 
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: mysecretname
+  annotations:
+    kubernetes.io/service-account.name: jenkins
+
+ubuntu@ip-11-0-1-229:~$ kubectl apply -f token.yaml -n webapps
+
+get the secret token using : kubectl describe secret my secretname -n webapps
+
+get server endpoint: ubuntu@ip-11-0-1-229:~/.kube$ cat config 
+```
 ## Description
 
 **Board Game Database Full-Stack Web Application.**
