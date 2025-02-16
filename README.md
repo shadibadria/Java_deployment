@@ -1,4 +1,4 @@
-# DevOps Project CI/CD + k8
+# DevOps Project End to End CI/CD.
 
 ### About
 Java maven project deployment to k8 cluster.
