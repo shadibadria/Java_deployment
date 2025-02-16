@@ -1,7 +1,8 @@
-# Project intro
-### About
+# Java CI/CD Project
 
-Java maven project deployment , using ci/cd jenkins, and aws .
+### About
+Java maven project deployment to k8 cluster.
+
 ### Infrastructre 
 - Terraform for managing the resources in aws .
 - JavaSpring Boot + mysql database.
