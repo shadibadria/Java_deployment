@@ -1,4 +1,4 @@
-# Java CI/CD Project
+# DevOps Project CI/CD + k8
 
 ### About
 Java maven project deployment to k8 cluster.
