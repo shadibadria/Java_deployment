@@ -34,7 +34,7 @@ Java maven project deployment , using ci/cd jenkins, and aws .
 	- Prometheus & Grafana monitor performance.
 
 ### Images
-![screenshot](/images/pipeline_result.png)
-![screenshot](/images/grafana.png)
-![screenshot](/images/nexus.png)
-![screenshot](/images/sonarqube.png)
+![screenshot](./images/pipeline_result.png)
+![screenshot](./images/grafana.png)
+![screenshot](./images/nexus.png)
+![screenshot](./images/sonarqube.png)
