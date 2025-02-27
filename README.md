@@ -14,7 +14,6 @@ Java maven project deployment to k8 cluster.
 - solarqube - code quality check.
 - Nexus -  artifact the package.
 - Monitoring (promethus+ grafana).
-- Jenkins server for ci/cd.
 - Linux + bash scripts .
 
 ### CI/CD Process (Jenkins Pipeline):
